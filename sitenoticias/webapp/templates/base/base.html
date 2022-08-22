@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<html lang="pt">
+
+<head> 
+    <meta charset="UTF-8">
+    <title> Diário da Manhã</title>
+</head>
+
+<body>
+<div>
+{% if user.is_authenticated %}
+{{user.username}}
+<a href="{% url 'logout' %}">Sair</a>
+{% else %}
+<a href="{% url 'login' %}">Login</a>
+<a href="{% url 'registo' %}">Registo</a>
+{% endif %}
+</div>
+
+{% block content %}
+{% endblock %}
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<html lang="pt">
+
+<head> 
+    <meta charset="UTF-8">
+    <title> Diário da Manhã</title>
+</head>
+
+<body>
+<div>
+{% if user.is_authenticated %}
+{{user.username}}
+<a href="{% url 'logout' %}">Sair</a>
+{% else %}
+<a href="{% url 'login' %}">Login</a>
+<a href="{% url 'registo' %}">Registo</a>
+{% endif %}
+</div>
+
+ <h1 align="center">Notícias em Destaque </h1>
+<div>
+{% if Noticias %}
+<table align='center'>
+    {% for noticia in Noticias %}
+    <tr>
+    <td><a href="/webapp/{{noticia.id}}">{{ noticia.titulo }}</a></td>
+    <td><img src="{{ noticia.imagem.url }}" width="350px" height="150px"/></td>
+    </tr>
+    {% endfor %}
+</table>        
+{% else %}
+    <p> Não existem Noticias hoje.</p>
+{% endif %}
+</div>
+
+</body>
+
+</html>

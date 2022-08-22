@@ -1,0 +1,35 @@
+{% extends "./base.html" %}
+
+{% block content %}
+
+{% if Noticia %}
+    <table align="center" width="50%">
+        <tr><td>{{ Noticia.titulo}}</td></tr>
+        <tr><td>{{ Noticia.texto}}</td></tr>
+        <tr><td><img src="{{ Noticia.imagem.url}}"></td></tr> 
+        <tr><td>Autores</td><td>{{ Noticia.editor}}</td></tr>    
+    </table>
+{% else %}
+        <h1>Não existe noticia</h1>
+{% endif %}
+        
+<td><a href="/webapp/comentario/{{Noticia.id}}" <button>Comentar</button></a> </td>
+        
+{% if Comentario %}
+   <table align="center" width="50%">
+   {% for comentario in Comentario %}
+   <tr>
+   <td>{{ comentario.texto }}</td>
+   <td>{{ comentario.user }}</td>
+   </tr> 
+   {% endfor %}
+
+   </table>
+{% else %}
+        <h1>Não existem comentários</h1>
+{% endif %}
+
+<h3><a href="{% url 'index' %}"> Voltar</a></h3>
+
+{% endblock %}
+ 

@@ -1,0 +1,17 @@
+{% extends "./base.html" %}
+
+{% block content %}
+
+<form action="{% url 'fim' %}" method= "post">
+{% csrf_token %}
+<input type="hidden" name="id_noticia" value="{{Noticia.id}}">
+<table>
+<tr>
+<td>Comentário:<input name="texto_input"></td>
+<td><button type="submit">Comentar</button> </td>
+</tr>
+</table>
+</form>
+<h1><a href="{% url 'index' %}"> Voltar</a></h1>
+
+{% endblock %}
